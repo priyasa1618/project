@@ -1,11 +1,19 @@
-app: main.o sendData.o
-	gcc -o app main.o sendData.o -lcurl
+CC = gcc
+CFLAGS = -Wall
+LIBS = -lcurl
 
-main.o: main.c sendData.h
-	gcc -c main.c
+TARGET = curl_app
 
-sendData.o: sendData.c sendData.h
-	gcc -c sendData.c
+SRC = main.c app.c
+OBJ = $(SRC:.c=.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET) $(LIBS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm *.o app
+	rm -f *.o $(TARGET)
