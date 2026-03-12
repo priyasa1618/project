@@ -1,19 +1,19 @@
-CC = gcc
-CFLAGS = -Wall
+CXX = g++
+CXXFLAGS = -Wall
 LIBS = -lcurl
 
 TARGET = curl_app
 
-SRC = main.c app.c
-OBJ = $(SRC:.c=.o)
+SRC = main.cpp app.cpp
+OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET) $(LIBS)
+	$(CXX) $(OBJ) -o $(TARGET) $(LIBS)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $<
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
 	rm -f *.o $(TARGET)
