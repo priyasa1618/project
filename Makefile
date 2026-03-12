@@ -4,7 +4,7 @@ LIBS = -lcurl
 
 TARGET = curl_app
 
-SRC = main.cpp app.cpp
+SRC = main.cpp sendData.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)
